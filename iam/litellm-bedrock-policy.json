@@ -7,7 +7,11 @@
                 "bedrock:InvokeModelWithResponseStream"
             ],
             "Effect": "Allow",
-            "Resource": "*"
+            "Resource": [
+                "arn:aws:bedrock:AWS_REGION::foundation-model/anthropic.claude-3-sonnet-20240229-v1:0",
+                "arn:aws:bedrock:AWS_REGION::foundation-model/meta.llama3-8b-instruct-v1:0",
+                "arn:aws:bedrock:AWS_REGION::foundation-model/mistral.mixtral-8x7b-instruct-v0:1"
+            ]
         }
     ]
 }

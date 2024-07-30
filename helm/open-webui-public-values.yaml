@@ -1,0 +1,16 @@
+persistence:
+    storageClass: gp2
+service:
+    type: ClusterIP
+pipelines:
+    enabled: false
+ingress:
+    enabled: true
+    annotations: {
+        "kubernetes.io/ingress.class": "alb",
+        "alb.ingress.kubernetes.io/scheme": "internet-facing",
+        "alb.ingress.kubernetes.io/target-type": "ip",
+        "alb.ingress.kubernetes.io/certificate-arn": "${CERTIFICATE_ARN}"
+    }
+    tls: true
+    host: "${HOSTNAME}"

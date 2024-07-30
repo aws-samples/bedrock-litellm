@@ -14,13 +14,26 @@ While LiteLLM is only used as a proxy in this implementation, it has several oth
 
 **NOTE:** The implementation has been tested on Cloud9/Amazon Linux. Make sure to disable AWS managed temporary credentials and attach an IAM role with sufficient permissions.
 
+### Prerequisites
+- A domain that can be used for hosting Open WebUI, a web frontend that allows users to interact with LLMs; it will be used to test LiteLLM setup.
+- A digital certificate in AWS Certificate Manager (ACM) for enabling TLS on Open WebUI
+
 ### Configure environment variables 
-1. Configure environment variables
+1. Configure environment variables; replace `<hostname>` with the hostname for OpenUI, and replace `<cert-arn>` with the ARN of the ACM certificate for Open WebUI
+
+```sh
+export HOSTNAME="<hostname>"
+export CERTIFICATE_ARN="<cert-arn>"
+
+echo "export HOSTNAME=${HOSTNAME}" | tee -a ~/.bash_profile
+echo "export CERTIFICATE_ARN=${CERTIFICATE_ARN}" | tee -a ~/.bash_profile
+```
+
 ```sh
 export TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
-export AZ=`curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/availability-zone`
-export AWS_REGION=`echo $AZ | sed 's/\(.*\)[a-z]/\1/'`
+export AWS_REGION=curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/region
 export CLUSTER_NAME="litellm-demo"
+
 echo "export AWS_REGION=${AWS_REGION}" | tee -a ~/.bash_profile
 echo "export CLUSTER_NAME=${CLUSTER_NAME}" | tee -a ~/.bash_profile
 ```
@@ -83,6 +96,7 @@ eksctl utils associate-iam-oidc-provider --cluster $CLUSTER_NAME --approve
 
 First, create IAM policy:
 ```sh
+sed -i "s/AWS_REGION/$AWS_REGION/g" bedrock-litellm/iam/litellm-bedrock-policy.json
 export LITELLM_BEDROCK_IAM_POLICY_ARN=$(aws iam create-policy \
    --policy-name litellm-bedrock-policy \
    --policy-document file://bedrock-litellm/iam/litellm-bedrock-policy.json \
@@ -115,6 +129,11 @@ kubectl apply -f litellm/deploy/kubernetes/service.yaml
 ```
 
 11. Verify LiteLLM
+
+**NOTES:** Before you proceed with the steps below, make sure of the following:
+- Acess to Bedrock models is enabled by following the steps in [this doc page](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html#model-access-add).
+- LiteLLM pods are up and running
+
 ```sh
 kubectl run curl --image=curlimages/curl --rm -it -- /bin/sh
 curl --location 'http://litellm-service.default.svc.cluster.local:4000/chat/completions' \
@@ -156,6 +175,42 @@ helm upgrade --install aws-ebs-csi-driver \
     aws-ebs-csi-driver/aws-ebs-csi-driver
 ```
 
+12. Install AWS Load Balancer Controller (AWS LBC) to expose Open WebUI:
+
+First, create the IAM policy:
+
+```sh
+curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.7.2/docs/install/iam_policy.json
+
+export AWS_LBC_IAM_POLICY_ARN=$(aws iam create-policy \
+   --policy-name AWSLoadBalancerControllerIAMPolicy \
+   --policy-document file://iam_policy.json \
+   --output text \
+   --query "Policy.Arn")
+echo "export AWS_LBC_IAM_POLICY_ARN=${AWS_LBC_IAM_POLICY_ARN}" | tee -a ~/.bash_profile
+```
+
+Then, create IRSA setup:
+```sh
+eksctl create iamserviceaccount \
+    --cluster $CLUSTER_NAME \
+    --namespace=kube-system \
+    --name=aws-load-balancer-controller \
+    --role-name AmazonEKS_LoadBalancerController_Role \
+    --attach-policy-arn $AWS_LBC_IAM_POLICY_ARN \
+    --approve
+```
+Then, install AWS LBC helm chart:
+```sh
+helm repo add eks https://aws.github.io/eks-charts
+helm repo update eks
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+  --namespace kube-system \
+  --set clusterName=$CLUSTER_NAME \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=aws-load-balancer-controller 
+```
+
 13. Install Open WebUI:
 ```sh
 helm repo add open-webui https://helm.openwebui.com/
@@ -164,18 +219,19 @@ helm repo update
 helm upgrade \
     --install open-webui open-webui/open-webui \
     --namespace open-webui \
-    --set persistence.storageClass=gp2 \
-    --set service.type=LoadBalancer \
-    --set pipelines.enabled=false \
-    --create-namespace
+    --create-namespace \
+    -f bedrock-litellm/helm/open-webui-private-values.yaml
 ```
 
-14. Extract Open WebUI URL:
+The first user signing up will get admin access. So, initially, Open WebUI will be only accessible from within the cluster to securely create the first/admin user. Subsequent sign ups will be in pending state till they are approved by the admin user.
+
+14. Use `kubectl port-forward` to allow access to Open WebUI from the machine used for installation:
 ```sh
-kubectl -n open-webui get svc open-webui  -o jsonpath='{.status.loadBalancer.ingress[*].hostname}'
+kubectl port-forward service/open-webui -n open-webui  8080:80
 ```
+If you are using Cloud9, you can access Open WebUI by clicking "Preview" (top bar), then "Preview Running Application".
 
-15. Sign-up (first signed up user get admin access), then go to User icon at top right, settings, admin settings, connections, then edit OpenAI API to be as follows:
+15. Sign-up (remember, first signed up user get admin access), then go to User icon at top right, settings, admin settings, connections, then edit OpenAI API to be as follows:
 
 ```sh
 http://litellm-service.default.svc.cluster.local:4000/v1
@@ -185,7 +241,26 @@ Click on "Verify connection" button to make sure connectivity is in-place, then 
 
 ![architecture](docs/open-webui.png)
 
-Edit `litellm/proxy_config.yaml` to enable more Bedrock models on LiteLLM.
+Now, we have the admin user created, we can make Open WebUI accessible publicly.
+
+16. Update Open WebUI helm release to include `Ingress` object for exposing it:
+```sh
+envsubst < bedrock-litellm/helm/open-webui-public-values.yaml | helm upgrade \
+    open-webui open-webui/open-webui \
+    --namespace open-webui \
+    -f -
+```
+
+17. Extract Open WebUI URL:
+```sh
+kubectl -n open-webui get ingress open-webui  -o jsonpath='{.status.loadBalancer.ingress[*].hostname}'
+```
+
+18. Add a CNAME record for `<hostname>` (check prerequisities section) that points to the ALB host name, then access Open WebUI using `<hostname>`.
+
+**NOTE:** ELB needs a minutes or so to complete the target registration; if the URL above did not work for you, wait for a few seconds for the registration to get completed.
+
+Edit `litellm/proxy_config.yaml`, update the IAM policy `litellm-bedrock-policy.json`, and enable access through the Bedrock console to add more Bedrock models on LiteLLM.
 
 ## Clean-up
 1. Uninstall Open WebUI:
@@ -197,13 +272,24 @@ helm uninstall open-webui --namespace open-webui
 ```sh
 kubectl delete -f litellm/deploy/kubernetes/service.yaml
 kubectl delete -f litellm/deploy/kubernetes/kub.yaml
+kubectl delete configmap litellm-config
 eksctl delete iamserviceaccount \
     --name litellm-sa \
     --cluster $CLUSTER_NAME
 aws iam delete-policy --policy-arn $LITELLM_BEDROCK_IAM_POLICY_ARN
 ```
 
-3. Uninstall EBS driver
+3. Uninstall AWS LBC
+```sh
+helm uninstall aws-load-balancer-controller --namespace kube-system
+eksctl delete iamserviceaccount \
+    --name aws-load-balancer-controller \
+    --namespace=kube-system \
+    --cluster $CLUSTER_NAME
+aws iam delete-policy --policy-arn $AWS_LBC_IAM_POLICY_ARN
+```
+
+4. Uninstall EBS driver
 ```sh
 helm uninstall aws-ebs-csi-driver \
     --namespace kube-system
@@ -212,16 +298,16 @@ eksctl delete iamserviceaccount \
     --cluster $CLUSTER_NAME
 ```
 
-4. Delete cluster
+5. Delete cluster
 ```sh
 eksctl delete cluster --name $CLUSTER_NAME
 ```
 
+6. Delete the CNAME DNS record for Open WebUI, and delete the ACM certiciate
+
 ## Security
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+See CONTRIBUTING for more information.
 
 ## License
-
 This library is licensed under the MIT-0 License. See the LICENSE file.
-

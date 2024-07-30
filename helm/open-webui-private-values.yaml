@@ -1,0 +1,6 @@
+persistence:
+    storageClass: gp2
+service:
+    type: ClusterIP
+pipelines:
+    enabled: false
