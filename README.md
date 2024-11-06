@@ -75,6 +75,25 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 chmod 700 get_helm.sh
 ./get_helm.sh
 ```
+
+6. Install Jq
+```sh
+export ARCH=amd64
+export MACHINE=linux #e.g. linux, macos
+curl -sLO "https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-$MACHINE-$ARCH"
+chmod +x "jq-$MACHINE-$ARCH"
+echo "alias jq=jq-$MACHINE-$ARCH" >> ~/.zshrc && source ~/.zshrc 
+sudo mv "jq-$MACHINE-$ARCH" /usr/local/bin
+```
+
+7. Install envsubst
+Envsubst is a tool used to replace environment variables referenced in a text file with their associated values.
+```sh
+curl -L https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-`uname -s`-`uname -m` -o envsubst
+chmod +x envsubst
+sudo mv envsubst /usr/local/bin
+```
+
 ### Create an EKS cluster
 6. Create cluster:
 ```sh
@@ -261,6 +280,32 @@ kubectl -n open-webui get ingress open-webui  -o jsonpath='{.status.loadBalancer
 **NOTE:** ELB needs a minutes or so to complete the target registration; if the URL above did not work for you, wait for a few seconds for the registration to get completed.
 
 Edit `litellm/proxy_config.yaml`, update the IAM policy `litellm-bedrock-policy.json`, and enable access through the Bedrock console to add more Bedrock models on LiteLLM.
+
+## Code Changes for OpenAI to Amazon Bedrock Migration
+
+With LiteLLM successfully deployed onto Amazon EKS and proxying requests to Amazon Bedrock, you can choose to migrate from OpenAI with zero code changes.
+
+1. Update your application's OpenAI API endpoint to point to your ALB DNS name, noted in the previous section.
+
+```python
+import openai
+
+openai.api_base = {"your ALB DNS name"}
+openai.api_key = {"your-open-ai-api-key"}
+
+# Your existing OpenAI code remains unchanged
+response = openai.Completion.create(
+model="text-davinci-003",
+prompt="Translate the following English text to French: 'Hello, how are you?'"
+)
+```
+
+2. Test and validate your existing code and application work as expected, calling foundation models hosted on Amazon Bedrock via LiteLLM hosted on Amazon EKS. Best practices and considerations:
+
+    1. Gradually migrate: Start by routing a small percentage of traffic through the LiteLLM proxy and gradually increase as you gain confidence.
+    2. Monitor performance: Use Amazon CloudWatch to monitor the performance and AWS Cost Explorer to monitor the costs of your Amazon Bedrock usage.
+    3. Security: Ensure proper AWS Identity and Access Management (AWS IAM) roles and security groups are in place for your EKS cluster and Amazon Bedrock access.
+    4. Scalability: Configure auto-scaling for your EKS nodes to handle varying loads.
 
 ## Clean-up
 1. Uninstall Open WebUI:
