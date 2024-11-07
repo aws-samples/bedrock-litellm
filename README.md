@@ -31,7 +31,7 @@ echo "export CERTIFICATE_ARN=${CERTIFICATE_ARN}" | tee -a ~/.bash_profile
 
 ```sh
 export TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
-export AWS_REGION=curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/region
+export AWS_REGION=`curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/region`
 export CLUSTER_NAME="litellm-demo"
 
 echo "export AWS_REGION=${AWS_REGION}" | tee -a ~/.bash_profile
@@ -76,7 +76,7 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 ```
 
-6. Install Jq
+6. Install Jq:
 ```sh
 export ARCH=amd64
 export MACHINE=linux #e.g. linux, macos
@@ -86,7 +86,7 @@ echo "alias jq=jq-$MACHINE-$ARCH" >> ~/.zshrc && source ~/.zshrc
 sudo mv "jq-$MACHINE-$ARCH" /usr/local/bin
 ```
 
-7. Install envsubst
+7. Install envsubst:
 ```sh
 curl -L https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-`uname -s`-`uname -m` -o envsubst
 chmod +x envsubst
