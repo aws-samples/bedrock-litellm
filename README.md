@@ -219,7 +219,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   --set serviceAccount.name=aws-load-balancer-controller 
 ```
 
-13. Install Open WebUI:
+15. Install Open WebUI:
 ```sh
 helm repo add open-webui https://helm.openwebui.com/
 helm repo update
@@ -233,13 +233,13 @@ helm upgrade \
 
 The first user signing up will get admin access. So, initially, Open WebUI will be only accessible from within the cluster to securely create the first/admin user. Subsequent sign ups will be in pending state till they are approved by the admin user.
 
-15. Use `kubectl port-forward` to allow access to Open WebUI from the machine used for installation:
+16. Use `kubectl port-forward` to allow access to Open WebUI from the machine used for installation:
 ```sh
 kubectl port-forward service/open-webui -n open-webui  8080:80
 ```
 If you are using Cloud9, you can access Open WebUI by clicking "Preview" (top bar), then "Preview Running Application".
 
-16. Sign-up (remember, first signed up user get admin access), then go to User icon at top right, settings, admin settings, connections, then edit OpenAI API to be as follows:
+17. Sign-up (remember, first signed up user get admin access), then go to User icon at top right, settings, admin settings, connections, then edit OpenAI API to be as follows:
 
 ```sh
 http://litellm-service.default.svc.cluster.local:4000/v1
@@ -251,7 +251,7 @@ Click on "Verify connection" button to make sure connectivity is in-place, then 
 
 Now, we have the admin user created, we can make Open WebUI accessible publicly.
 
-17. Update Open WebUI helm release to include `Ingress` object for exposing it:
+18. Update Open WebUI helm release to include `Ingress` object for exposing it:
 ```sh
 envsubst < bedrock-litellm/helm/open-webui-public-values.yaml | helm upgrade \
     open-webui open-webui/open-webui \
@@ -259,12 +259,12 @@ envsubst < bedrock-litellm/helm/open-webui-public-values.yaml | helm upgrade \
     -f -
 ```
 
-18. Extract Open WebUI URL:
+19. Extract Open WebUI URL:
 ```sh
 kubectl -n open-webui get ingress open-webui  -o jsonpath='{.status.loadBalancer.ingress[*].hostname}'
 ```
 
-19. Add a CNAME record for `<hostname>` (check prerequisities section) that points to the ALB host name, then access Open WebUI using `<hostname>`.
+20. Add a CNAME record for `<hostname>` (check prerequisities section) that points to the ALB host name, then access Open WebUI using `<hostname>`.
 
 **NOTE:** ELB needs a minutes or so to complete the target registration; if the URL above did not work for you, wait for a few seconds for the registration to get completed.
 
