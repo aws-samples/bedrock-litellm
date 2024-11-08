@@ -10,7 +10,7 @@ ingress:
         "kubernetes.io/ingress.class": "alb",
         "alb.ingress.kubernetes.io/scheme": "internet-facing",
         "alb.ingress.kubernetes.io/target-type": "ip",
-        "alb.ingress.kubernetes.io/certificate-arn": "${CERTIFICATE_ARN}"
+        "alb.ingress.kubernetes.io/certificate-arn": "${OPEN_WEBUI_CERTIFICATE_ARN}"
     }
     tls: true
-    host: "${HOSTNAME}"
+    host: "${OPEN_WEBUI_HOSTNAME}"
