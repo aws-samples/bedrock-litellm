@@ -39,7 +39,7 @@ echo "export LITELLM_CERTIFICATE_ARN=${LITELLM_CERTIFICATE_ARN}" | tee -a ~/.bas
 
 ```sh
 export TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
-export AWS_REGION=curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/region
+export AWS_REGION=`curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/region`
 export CLUSTER_NAME="litellm-demo"
 
 echo "export AWS_REGION=${AWS_REGION}" | tee -a ~/.bash_profile
@@ -83,14 +83,21 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 chmod 700 get_helm.sh
 ./get_helm.sh
 ```
+
+6. Install envsubst:
+```sh
+curl -L https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-`uname -s`-`uname -m` -o envsubst
+chmod +x envsubst
+sudo mv envsubst /usr/local/bin
+```
+
 ### Create an EKS cluster
-6. Create cluster:
+7. Create cluster:
 ```sh
 envsubst < bedrock-litellm/eksctl/cluster-config.yaml | eksctl create cluster -f -
 ```
 
 ### Install LiteLLM
-
 7. Install AWS Load Balancer Controller (AWS LBC) to expose LiteLLM:
 
 First, create the IAM policy:
@@ -126,7 +133,6 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   --set serviceAccount.create=false \
   --set serviceAccount.name=aws-load-balancer-controller 
 ```
-
 8. Clone LiteLLM
 ```sh
 git clone https://github.com/BerriAI/litellm.git
@@ -180,10 +186,8 @@ kubectl get ingress litellm-ingress  -o jsonpath='{.status.loadBalancer.ingress[
 ```
 
 13. Add a CNAME record for `<litellm-hostname>` (check prerequisities section) that points to the ALB host name, then access LiteLLM using `<litellm-hostname>`.
-
-**NOTE:** ELB needs a minutes or so to complete the target registration; if the URL above did not work for you, wait for a few seconds for the registration to get completed.
-
 **NOTES:** Before you proceed with the steps below, make sure of the following:
+- ELB needs a minutes or so to complete the target registration; if the URL above did not work for you, wait for a few seconds for the registration to get completed.
 - Acess to Bedrock models is enabled by following the steps in [this doc page](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html#model-access-add).
 - LiteLLM pods are up and running
 
@@ -225,7 +229,7 @@ curl --location "https://${LITELLM_HOSTNAME}/chat/completions" \
 
 ### Use Open WebUI to test the setup
 
-[Open WebUI]() is a web frontend that allows users to interact with LLMs. It supports locally running LLMs using Ollama, and OpenAI-compatible remote endpoints. In this implementation, we are configuring a remote endpoint that points to LiteLLM to show how LiteLLM allowed for accessing Bedrock through OpenAI-compatible interface. 
+[Open WebUI]() is a web frontend that allows users to interact with LLMs. It supports locally running LLMs using Ollama, and OpenAI-compatible remote endpoints. In this implementation, we are configuring a remote endpoint that points to LiteLLM to show how LiteLLM allows for accessing Bedrock through an OpenAI-compatible interface. 
 
 16. Install EBS CSI driver (EBS volumes will be used to store Open WebUI state):
 
@@ -248,7 +252,6 @@ helm upgrade --install aws-ebs-csi-driver \
     --set controller.serviceAccount.create=false \
     aws-ebs-csi-driver/aws-ebs-csi-driver
 ```
-
 
 17. Install Open WebUI:
 ```sh
@@ -300,6 +303,34 @@ kubectl -n open-webui get ingress open-webui  -o jsonpath='{.status.loadBalancer
 **NOTE:** ELB needs a minutes or so to complete the target registration; if the URL above did not work for you, wait for a few seconds for the registration to get completed.
 
 Edit `litellm/proxy_config.yaml`, update the IAM policy `litellm-bedrock-policy.json`, and enable access through the Bedrock console to add more Bedrock models on LiteLLM.
+
+## Code Changes for OpenAI to Amazon Bedrock Migration
+
+With LiteLLM successfully deployed onto Amazon EKS and proxying requests to Amazon Bedrock, you can choose to migrate from OpenAI with minimal code changes.
+
+Requests from your applications that do not originate from Open WebUI can be modified by updating your OpenAI base endpoint to point to your ALB DNS name. This is similar to the change we made in step 17, updating an OpenAI endpoint to point to your LiteLLM service, this time to the ALB host name, or your CNAME record for <litellm-hostname> (check prerequisities section) that points to the ALB host name.
+
+1. Update your application's OpenAI API endpoint to point to your <litellm-hostname>.
+
+```python
+import openai
+
+openai.api_base = {"your-litellm-hostname"}
+openai.api_key = {"your-open-ai-api-key"}
+
+# Your existing OpenAI code remains unchanged
+response = openai.Completion.create(
+model="text-davinci-003",
+prompt="Translate the following English text to French: 'Hello, how are you?'"
+)
+```
+
+2. Test and validate that your existing code and application work as expected, calling foundation models hosted on Amazon Bedrock via LiteLLM hosted on Amazon EKS. Best practices and considerations:
+
+    1. Gradually migrate: Start by routing a small percentage of traffic through the LiteLLM proxy and gradually increase as you gain confidence.
+    2. Monitor performance: Use Amazon CloudWatch to monitor the performance and AWS Cost Explorer to monitor the costs of your AWS usage, including Amazon Bedrock.
+    3. Security: Ensure least privilege AWS Identity and Access Management (AWS IAM) roles and security groups are in place for your EKS cluster and Amazon Bedrock access.
+    4. Scalability: Configure auto-scaling for your EKS nodes to handle varying loads.
 
 ## Clean-up
 1. Uninstall Open WebUI:
