@@ -11,11 +11,13 @@ theme:
 nav:
   - Home: 'index.md'
   # - Get Started: 'general/get-started.md'
-  - Architecture: './architecture.md'
+  - Architecture: './10-architecture.md'
   - Deployment:
-    - Prerequisites: './deploy/prerequisites.md'
-    - Configure environment variables: './deploy/configure-env-variables.md'
-    - Install Kubernetes tools: './deploy/tools.md'
+    - Prerequisites: './20-deploy/10-prerequisites.md'
+    - Configure environment variables: './20-deploy/20-configure-env-variables.md'
+    - Clone the repo: './20-deploy/25-clone-repo.md'
+    - Install Kubernetes tools: './20-deploy/30-tools.md'
+    - Create and prepare an EKS cluster: './20-deploy/40-create-prepare-cluster.md'
 markdown_extensions:
   - admonition
   - pymdownx.highlight:
