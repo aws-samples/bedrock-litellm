@@ -18,6 +18,8 @@ nav:
     - Clone the repo: './20-deploy/25-clone-repo.md'
     - Install Kubernetes tools: './20-deploy/30-tools.md'
     - Create and prepare an EKS cluster: './20-deploy/40-create-prepare-cluster.md'
+    - Install LiteLLM: './20-deploy/50-install-litellm.md'
+    - Expose LiteLLM: './20-deploy/60-expose-litellm.md'
 markdown_extensions:
   - admonition
   - pymdownx.highlight:

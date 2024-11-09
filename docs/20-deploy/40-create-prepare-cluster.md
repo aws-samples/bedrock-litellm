@@ -5,6 +5,12 @@
 envsubst < $BEDROCK_LITELLM_DIR/eksctl/cluster-config.yaml | eksctl create cluster -f -
 ```
 
+1. Create an IAM OIDC provider for the cluster to be able to use [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) (required for granting IAM permissions to LiteLLM to be able to invoke Bedrock models):
+```sh
+eksctl utils associate-iam-oidc-provider --cluster $CLUSTER_NAME --approve
+```
+
+
 1. (Optional) Install AWS Load Balancer Controller (AWS LBC):
 
     !!! note annotate "Note"
