@@ -11,7 +11,7 @@ theme:
 nav:
   - Home: 'index.md'
   # - Get Started: 'general/get-started.md'
-  - Architecture: './10-architecture.md'
+  - Architecture: './10-architecture/10-architecture.md'
   - Deployment:
     - Prerequisites: './20-deploy/10-prerequisites.md'
     - Configure environment variables: './20-deploy/20-configure-env-variables.md'
@@ -20,6 +20,12 @@ nav:
     - Create and prepare an EKS cluster: './20-deploy/40-create-prepare-cluster.md'
     - Install LiteLLM: './20-deploy/50-install-litellm.md'
     - Expose LiteLLM: './20-deploy/60-expose-litellm.md'
+  - App changes: './30-app-changes/10-app-changes.md'
+  - Clients:
+    - Open WebUI: './40-clients/10-open-webui.md'
+  - Clean-up: './50-clean-up/10-clean-up.md'
+    
+
 markdown_extensions:
   - admonition
   - pymdownx.highlight:
