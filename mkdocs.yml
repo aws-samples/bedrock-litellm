@@ -1,0 +1,37 @@
+site_name: Migrate to Amazon Bedrock using LiteLLM
+site_url: https://github.bedrock-litellm.com
+theme:
+  name: material
+  features:
+    - navigation.path
+    - navigation.indexes
+    - content.code.copy
+
+# Website Page Tree
+nav:
+  - Home: 'index.md'
+  # - Get Started: 'general/get-started.md'
+  - Architecture: './10-architecture/10-architecture.md'
+  - Deployment:
+    - Prerequisites: './20-deploy/10-prerequisites.md'
+    - Configure environment variables: './20-deploy/20-configure-env-variables.md'
+    - Clone the repo: './20-deploy/25-clone-repo.md'
+    - Install Kubernetes tools: './20-deploy/30-tools.md'
+    - Create and prepare an EKS cluster: './20-deploy/40-create-prepare-cluster.md'
+    - Install LiteLLM: './20-deploy/50-install-litellm.md'
+    - Expose LiteLLM: './20-deploy/60-expose-litellm.md'
+  - App changes: './30-app-changes/10-app-changes.md'
+  - Clients:
+    - Open WebUI: './40-clients/10-open-webui.md'
+  - Clean-up: './50-clean-up/10-clean-up.md'
+    
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences

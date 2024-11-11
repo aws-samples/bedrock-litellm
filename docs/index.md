@@ -1,0 +1,1 @@
+Some organisations have already built applications that work with OpenAI compatible API and would like to switch to Amazon Bedrock -- this guide is to help you achieve that without changing app code by using LiteLLM.
