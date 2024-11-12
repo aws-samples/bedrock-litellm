@@ -14,10 +14,11 @@ echo "export LITELLM_DIR=${LITELLM_DIR}" | tee -a ~/.bash_profile
 
     First, create IAM policy:
     ```sh
-    sed -i "s/AWS_REGION/$AWS_REGION/g" $BEDROCK_LITELLM_DIR/iam/litellm-bedrock-policy.json
+    envsubst < $BEDROCK_LITELLM_DIR/iam/litellm-bedrock-policy.json > /tmp/litellm-bedrock-policy.json
+
     export LITELLM_BEDROCK_IAM_POLICY_ARN=$(aws iam create-policy \
     --policy-name litellm-bedrock-policy \
-    --policy-document file://$BEDROCK_LITELLM_DIR/iam/litellm-bedrock-policy.json \
+    --policy-document file:///tmp/litellm-bedrock-policy.json \
     --output text \
     --query "Policy.Arn")
     echo "export LITELLM_BEDROCK_IAM_POLICY_ARN=${LITELLM_BEDROCK_IAM_POLICY_ARN}" | tee -a ~/.bash_profile
@@ -46,7 +47,7 @@ echo "export LITELLM_DIR=${LITELLM_DIR}" | tee -a ~/.bash_profile
     yq -i 'del(.spec.template.spec.containers[0].env[] | select(.name == "DATABASE_URL") )' $LITELLM_DIR/deploy/kubernetes/kub.yaml
     yq -i '.spec.type= "ClusterIP"' $LITELLM_DIR/deploy/kubernetes/service.yaml
 
-    kubectl create configmap litellm-config --from-file=$BEDROCK_LITELLM_DIR/litellm/proxy_config.yaml
+    kubectl create configmap litellm-config --from-file=$BEDROCK_LITELLM_DIR/litellm/config/proxy_config.yaml
     kubectl apply -f $LITELLM_DIR/deploy/kubernetes/kub.yaml
     kubectl apply -f $LITELLM_DIR/deploy/kubernetes/service.yaml
     ```

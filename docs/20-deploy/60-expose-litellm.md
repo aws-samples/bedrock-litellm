@@ -16,7 +16,7 @@
 
 1. Apply LiteLLM ingress
     ```sh
-    envsubst < $BEDROCK_LITELLM_DIR/litellm/ingress.yaml | kubectl apply -f -
+    envsubst < $BEDROCK_LITELLM_DIR/litellm/deploy/ingress.yaml | kubectl apply -f -
     ```
 
     !!! note annotate "Note"

@@ -25,7 +25,7 @@ nav:
     - Model aliases: './25-config/10-model-alias.md'
     - Rate limiting: './25-config/20-rate-limit.md'
     - Routing: './25-config/30-route.md'
-    - Apply config changes to ConfigMap and Deployment: './25-config/40-apply-config-changes.md'
+    - Apply configuration changes: './25-config/40-apply-config-changes.md'
   - App changes: './30-app-changes/10-app-changes.md'
   - Contributors: './99-contributors.md'
     
