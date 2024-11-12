@@ -1,9 +1,8 @@
-# Connect Open WebUI to LiteLLM
+# (Optional) Connect Open WebUI to LiteLLM
 
 [Open WebUI]() is a web frontend that allows users to interact with LLMs. It supports locally running LLMs using Ollama, and OpenAI-compatible remote endpoints. In this implementation, we are configuring a remote endpoint that points to LiteLLM to show how LiteLLM allows for accessing Bedrock through an OpenAI-compatible interface. 
 
 ## Pre-requisites
-- An EKS cluster to host Open WebUI. This is already creeated as part of LiteLLM deployment.
 - A domain that can be used for hosting Open WebUI, a web frontend that allows users to interact with LLMs; it will be used to test LiteLLM setup.
 - A digital certificate in AWS Certificate Manager (ACM) for enabling TLS on Open WebUI
 
@@ -54,11 +53,15 @@
 
 1. Update Open WebUI helm release to include `Ingress` object for exposing it:
     ```sh
-    envsubst < bedrock-litellm/helm/open-webui-public-values.yaml | helm upgrade \
+    envsubst < $BEDROCK_LITELLM_DIR/helm/open-webui-public-values.yaml | helm upgrade \
         open-webui open-webui/open-webui \
         --namespace open-webui \
         -f -
     ```
+    
+    !!! note annotate "Note"
+        ELB needs a minute or so to complete the target registration; if the URL above did not work for you, wait for a few seconds for the registration to get completed.
+
 
 1. Extract Open WebUI URL:
     ```sh
@@ -67,6 +70,5 @@
 
 1. Add a CNAME record for `<open-webui-hostname>` (check prerequisities section) that points to the ALB host name, then access Open WebUI using `<open-webui-hostname>`.
 
-**NOTE:** ELB needs a minutes or so to complete the target registration; if the URL above did not work for you, wait for a few seconds for the registration to get completed.
 
-Edit `litellm/proxy_config.yaml`, update the IAM policy `litellm-bedrock-policy.json`, and enable access through the Bedrock console to add more Bedrock models on LiteLLM.
+1. Edit `litellm/proxy_config.yaml`, update the IAM policy `litellm-bedrock-policy.json`, and enable access through the Bedrock console to add more Bedrock models on LiteLLM.

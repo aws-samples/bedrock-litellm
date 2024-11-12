@@ -38,10 +38,13 @@ echo "export LITELLM_DIR=${LITELLM_DIR}" | tee -a ~/.bash_profile
     !!! warning annotate "Note"
         LiteLLM helm chart is currently BETA, hence K8s manifests were used for installation. The snippet below will be changed once the helm chart is GAed.
 
+    !!! warning annotate "Note"
+        Make sure to change `LITELLM_MASTER_KEY` in `$LITELLM_DIR/deploy/kubernetes/kub.yaml` to a random string rather than using the default API key, specially if you will expose LiteLLM endpoint externally.
+
     ```sh
-    yq -i '.spec.template.spec.serviceAccount= "litellm-sa"' litellm/deploy/kubernetes/kub.yaml
-    yq -i 'del(.spec.template.spec.containers[0].env[] | select(.name == "DATABASE_URL") )' litellm/deploy/kubernetes/kub.yaml
-    yq -i '.spec.type= "ClusterIP"' litellm/deploy/kubernetes/service.yaml
+    yq -i '.spec.template.spec.serviceAccount= "litellm-sa"' $LITELLM_DIR/deploy/kubernetes/kub.yaml
+    yq -i 'del(.spec.template.spec.containers[0].env[] | select(.name == "DATABASE_URL") )' $LITELLM_DIR/deploy/kubernetes/kub.yaml
+    yq -i '.spec.type= "ClusterIP"' $LITELLM_DIR/deploy/kubernetes/service.yaml
 
     kubectl create configmap litellm-config --from-file=$BEDROCK_LITELLM_DIR/litellm/proxy_config.yaml
     kubectl apply -f $LITELLM_DIR/deploy/kubernetes/kub.yaml

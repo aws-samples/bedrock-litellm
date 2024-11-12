@@ -1,4 +1,10 @@
-# Expose LiteLLM
+# (Optional) Expose LiteLLM
+
+## Pre-requisites
+- A domain that can be used for hosting LiteLLM and exposing it externally through public endpoint.
+- A digital certificate in AWS Certificate Manager (ACM) for enabling TLS on LiteLLM
+
+## Expose LiteLLM
 1. Configure environment variables; replace `<litellm-hostname>`, `<litellm-cert-arn>` with the corresponding hostnames and ACM certificates ARN.
     ```sh
     export LITELLM_HOSTNAME="<litellm-hostname>"
@@ -14,7 +20,7 @@
     ```
 
     !!! note annotate "Note"
-        ELB needs a minutes or so to complete the target registration; if the URL above did not work for you, wait for a few seconds for the registration to get completed.
+        ELB needs a minute or so to complete the target registration; if the URL above did not work for you, wait for a few seconds for the registration to get completed.
 
 1. Extract LiteLLM URL:
     ```sh
