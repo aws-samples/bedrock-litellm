@@ -5,8 +5,9 @@ helm uninstall open-webui --namespace open-webui
 
 2. Uninstall LiteLLM
 ```sh
-kubectl delete -f litellm/deploy/kubernetes/service.yaml
-kubectl delete -f litellm/deploy/kubernetes/kub.yaml
+kubectl delete -f $BEDROCK_LITELLM_DIR/litellm/ingress.yaml
+kubectl delete -f $LITELLM_DIR/deploy/kubernetes/service.yaml
+kubectl delete -f $LITELLM_DIR/deploy/kubernetes/kub.yaml
 kubectl delete configmap litellm-config
 eksctl delete iamserviceaccount \
     --name litellm-sa \

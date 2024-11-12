@@ -21,4 +21,4 @@ spec:
               service:
                 name: litellm-service
                 port:
-                  name: 4000
+                  number: 4000
