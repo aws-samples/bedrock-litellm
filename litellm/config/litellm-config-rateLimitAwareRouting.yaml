@@ -1,0 +1,17 @@
+model_list:
+    - model_name: claude-3-sonnet
+      litellm_params: 
+        model: bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0
+        aws_region_name: $AWS_REGION
+      tpm: 200
+      rpm: 1
+    - model_name: claude-3-haiku
+      litellm_params: 
+        model: bedrock/anthropic.claude-3-haiku-20240307-v1:0
+        aws_region_name: $AWS_REGION
+      tpm: 200
+      rpm: 1
+
+router_settings:
+  routing_strategy: usage-based-routing-v2
+  enable_pre_call_check: true

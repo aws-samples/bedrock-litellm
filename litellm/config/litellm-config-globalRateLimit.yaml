@@ -1,0 +1,24 @@
+model_list:
+  - model_name: claude-3
+    litellm_params:
+      model: bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0
+      aws_region_name: $AWS_REGION
+      rpm: 2 
+      tpm: 200
+
+router_settings:
+  enable_pre_call_checks: true # 1. Enable pre-call checks
+ 
+
+litellm_settings:
+  num_retries: 2 # retry call 2 times on each model_name (e.g. llama-3.1-8b)
+  request_timeout: 45
+  allowed_fails: 3 # cooldown model if it fails > 1 call in a minute. 
+  cooldown_time: 30 # how long to cooldown model if fails/min > allowed_fails
+  set_verbose: False # Switch off Debug Logging, ensure your logs do not have any debugging on
+  json_logs: true
+  max_end_user_budget: 0.0001
+
+
+
+
