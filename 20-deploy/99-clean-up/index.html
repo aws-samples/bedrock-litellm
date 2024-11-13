@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://aws-samples.github.io/bedrock-litellm/30-app-changes/10-app-changes/">
+        <link rel="canonical" href="https://aws-samples.github.io/bedrock-litellm/20-deploy/99-clean-up/">
       
       
-        <link rel="prev" href="../../25-config/40-apply-config-changes/">
+        <link rel="prev" href="../70-open-webui/">
       
       
-        <link rel="next" href="../../99-contributors/">
+        <link rel="next" href="../../25-config/10-model-alias/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>App changes - Migrate to Amazon Bedrock using LiteLLM</title>
+        <title>Clean-up - Migrate to Amazon Bedrock using LiteLLM</title>
       
     
     
@@ -63,11 +63,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#code-changes-for-openai-to-amazon-bedrock-migration" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -100,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              App changes
+              Clean-up
             
           </span>
         </div>
@@ -254,8 +249,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -278,11 +275,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -296,7 +293,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Deployment
@@ -310,7 +307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/20-configure-env-variables/" class="md-nav__link">
+      <a href="../20-configure-env-variables/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -331,7 +328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/25-clone-repo/" class="md-nav__link">
+      <a href="../25-clone-repo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -352,7 +349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/30-tools/" class="md-nav__link">
+      <a href="../30-tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -373,7 +370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/40-create-prepare-cluster/" class="md-nav__link">
+      <a href="../40-create-prepare-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -394,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/50-install-litellm/" class="md-nav__link">
+      <a href="../50-install-litellm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -415,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/60-expose-litellm/" class="md-nav__link">
+      <a href="../60-expose-litellm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -436,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/70-open-webui/" class="md-nav__link">
+      <a href="../70-open-webui/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -454,10 +451,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../20-deploy/99-clean-up/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -466,6 +470,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -641,19 +646,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../30-app-changes/10-app-changes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -662,7 +658,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -704,8 +699,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -723,32 +716,52 @@
   
 
 
-<h1 id="code-changes-for-openai-to-amazon-bedrock-migration">Code Changes for OpenAI to Amazon Bedrock Migration</h1>
-<p>With LiteLLM successfully deployed onto Amazon EKS and proxying requests to Amazon Bedrock, you can choose to migrate from OpenAI with minimal code changes.</p>
-<p>Requests from your applications that do not originate from Open WebUI can be modified by updating your OpenAI base endpoint to point to your ALB DNS name. This is similar to the change we made in step 17, updating an OpenAI endpoint to point to your LiteLLM service, this time to the ALB host name, or your CNAME record for <litellm-hostname> (check prerequisities section) that points to the ALB host name.</p>
+  <h1>Clean-up</h1>
+
 <ol>
 <li>
-<p>Update your application's OpenAI API endpoint to point to your <litellm-hostname>.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">openai</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">openai</span><span class="o">.</span><span class="n">api_base</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;your-litellm-hostname&quot;</span><span class="p">}</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">openai</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;your-open-ai-api-key&quot;</span><span class="p">}</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Your existing OpenAI code remains unchanged</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">Completion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">model</span><span class="o">=</span><span class="s2">&quot;text-davinci-003&quot;</span><span class="p">,</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Translate the following English text to French: &#39;Hello, how are you?&#39;&quot;</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">)</span>
-</span></code></pre></div>
+<p>Uninstall Open WebUI:
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>open-webui<span class="w"> </span>--namespace<span class="w"> </span>open-webui
+</span></code></pre></div></p>
 </li>
 <li>
-<p>Test and validate that your existing code and application work as expected, calling foundation models hosted on Amazon Bedrock via LiteLLM hosted on Amazon EKS. Best practices and considerations:</p>
-<ol>
-<li>Gradually migrate: Start by routing a small percentage of traffic through the LiteLLM proxy and gradually increase as you gain confidence.</li>
-<li>Monitor performance: Use Amazon CloudWatch to monitor the performance and AWS Cost Explorer to monitor the costs of your AWS usage, including Amazon Bedrock.</li>
-<li>Security: Ensure least privilege AWS Identity and Access Management (AWS IAM) roles and security groups are in place for your EKS cluster and Amazon Bedrock access.</li>
-<li>Scalability: Configure auto-scaling for your EKS nodes to handle varying loads.</li>
-</ol>
+<p>Uninstall LiteLLM
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span><span class="nv">$BEDROCK_LITELLM_DIR</span>/litellm/ingress.yaml
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span><span class="nv">$LITELLM_DIR</span>/deploy/kubernetes/service.yaml
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span><span class="nv">$LITELLM_DIR</span>/deploy/kubernetes/kub.yaml
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>configmap<span class="w"> </span>litellm-config
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>eksctl<span class="w"> </span>delete<span class="w"> </span>iamserviceaccount<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span>--name<span class="w"> </span>litellm-sa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>aws<span class="w"> </span>iam<span class="w"> </span>delete-policy<span class="w"> </span>--policy-arn<span class="w"> </span><span class="nv">$LITELLM_BEDROCK_IAM_POLICY_ARN</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Uninstall AWS LBC
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span>--namespace<span class="w"> </span>kube-system
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>eksctl<span class="w"> </span>delete<span class="w"> </span>iamserviceaccount<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>--name<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>--namespace<span class="o">=</span>kube-system<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>aws<span class="w"> </span>iam<span class="w"> </span>delete-policy<span class="w"> </span>--policy-arn<span class="w"> </span><span class="nv">$AWS_LBC_IAM_POLICY_ARN</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Uninstall EBS driver
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>aws-ebs-csi-driver<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>--namespace<span class="w"> </span>kube-system
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>eksctl<span class="w"> </span>delete<span class="w"> </span>iamserviceaccount<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span>--name<span class="w"> </span>ebs-csi-controller-sa<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Delete cluster
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>eksctl<span class="w"> </span>delete<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span><span class="nv">$CLUSTER_NAME</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Delete the CNAME DNS records and the ACM certiciates used for LiteLLM and Open WebUI</p>
 </li>
 </ol>
 
