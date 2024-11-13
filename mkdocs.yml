@@ -1,5 +1,6 @@
 site_name: Migrate to Amazon Bedrock using LiteLLM
-site_url: https://github.bedrock-litellm.com
+site_url: https://aws-samples.github.io/bedrock-litellm/
+repo_url: https://github.com/aws-samples/bedrock-litellm
 theme:
   name: material
   features:
