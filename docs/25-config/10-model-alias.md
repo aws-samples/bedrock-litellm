@@ -26,6 +26,7 @@ model_list:
 ```sh
 curl --location "https://${LITELLM_HOSTNAME}/chat/completions" \
   --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer <your key>' \
   --data '{
     "model": "claude-3",
     "messages": [
