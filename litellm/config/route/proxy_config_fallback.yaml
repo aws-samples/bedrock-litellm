@@ -1,0 +1,19 @@
+model_list:
+  - model_name: claude-3-sonnet
+    litellm_params:
+      model: bedrock/invalid
+      aws_region_name: 'us-east-1'
+  - model_name: claude-3-haiku
+    litellm_params:
+      model: bedrock/anthropic.claude-3-haiku-20240307-v1:0
+      aws_region_name: 'us-west-2'
+
+router_settings:
+    enable_pre_call_checks: true # 1. Enable pre-call checks
+
+litellm_settings:
+  num_retries: 3 # retry call 3 times on each model_name (e.g. zephyr-beta)
+  request_timeout: 10 # raise Timeout error if call takes longer than 10s. Sets litellm.request_timeout 
+  fallbacks: [{"claude-3-sonnet": ["claude-3-haiku"]}] 
+  allowed_fails: 3 # cooldown model if it fails > 1 call in a minute. 
+  cooldown_time: 30 # how long to cooldown model if fails/min > allowed_fails

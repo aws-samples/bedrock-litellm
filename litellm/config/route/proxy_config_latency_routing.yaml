@@ -1,0 +1,13 @@
+model_list:
+  - model_name: claude-3
+    litellm_params: 
+      model: bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0
+      aws_region_name: $AWS_REGION
+  - model_name: claude-3
+    litellm_params: 
+      model: bedrock/anthropic.claude-3-haiku-20240307-v1:0
+      aws_region_name: $AWS_REGION
+
+router_settings:
+  routing_strategy: latency-based-routing"
+  enable_pre_call_check: true

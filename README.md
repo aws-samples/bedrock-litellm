@@ -1,5 +1,5 @@
 # How to use LiteLLM to easily migrate to Amazon Bedrock
-Some organisations have already built applications that work with OpenAI compatible API and would like to switch to Amazon Bedrock -- this implementation shows how you can do that without changing app code using LiteLLM.
+Some organizations have already built applications that work with OpenAI compatible APIs and would like to switch to Amazon Bedrock -- this implementation shows how you can do that without changing app code using LiteLLM.
 
 ## Architecture
 The diagram below depicts the solution architecture. [LiteLLM](https://www.litellm.ai/) is used as a proxy to translate the API call originating from the app in OpenAI format to Bedrock format.
@@ -16,9 +16,9 @@ While LiteLLM is only used as a proxy in this implementation, it has several oth
 
 ### Prerequisites
 - A domain that can be used for hosting Open WebUI, a web frontend that allows users to interact with LLMs; it will be used to test LiteLLM setup.
-- A digital certificate in AWS Certificate Manager (ACM) for enabling TLS on Open WebUI
+- A digital certificate in AWS Certificate Manager (ACM) for enabling TLS on Open WebUI.
 - A domain that can be used for hosting LiteLLM and exposing it externally through public endpoint.
-- A digital certificate in AWS Certificate Manager (ACM) for enabling TLS on LiteLLM
+- A digital certificate in AWS Certificate Manager (ACM) for enabling TLS on LiteLLM.
 
 ### Configure environment variables 
 1. Configure environment variables; replace `<open-webui-hostname>`, `<open-webui-cert-arn>`, `<litellm-hostname>`, `<litellm-cert-arn>` with the corresponding hostnames and ACM certificates ARN.
