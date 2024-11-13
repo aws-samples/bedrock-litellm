@@ -18,8 +18,8 @@ model_list:
 
 ## Steps to configure
 
-1. Use the model alias configuration under `$BEDROCK_LITELLM_DIR/litellm/config/proxy_config_model_alias.yaml`
-1. Follow the steps outlined in [Apply configuration changes](./40-apply-config-changes.md).
+1. Use the configuration file `$BEDROCK_LITELLM_DIR/litellm/config/proxy_config_model_alias.yaml`
+1. To apply the new configuration, follow the steps outlined in [Apply configuration changes](./40-apply-config-changes.md).
 
 ## Steps to test
 1. Test the model alias by invoking the user-facing model name as shown
