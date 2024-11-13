@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://aws-samples.github.io/bedrock-litellm/30-app-changes/10-app-changes/">
+        <link rel="canonical" href="https://aws-samples.github.io/bedrock-litellm/25-config/25-global-rate-limit/">
       
       
-        <link rel="prev" href="../../25-config/40-apply-config-changes/">
+        <link rel="prev" href="../20-rate-limit/">
       
       
-        <link rel="next" href="../../99-contributors/">
+        <link rel="next" href="../30-route/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>App changes - Migrate to Amazon Bedrock using LiteLLM</title>
+        <title>Global rate limiting - Migrate to Amazon Bedrock using LiteLLM</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#code-changes-for-openai-to-amazon-bedrock-migration" class="md-skip">
+        <a href="#global-rate-limiting" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              App changes
+              Global rate limiting
             
           </span>
         </div>
@@ -482,8 +482,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -500,11 +502,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -518,7 +520,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Configuration
@@ -532,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../25-config/10-model-alias/" class="md-nav__link">
+      <a href="../10-model-alias/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -553,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../25-config/20-rate-limit/" class="md-nav__link">
+      <a href="../20-rate-limit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -571,10 +573,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../25-config/25-global-rate-limit/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Global rate limiting
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -583,6 +605,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sample-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-configure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to configure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to test
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -595,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../25-config/30-route/" class="md-nav__link">
+      <a href="../30-route/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -616,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../25-config/40-apply-config-changes/" class="md-nav__link">
+      <a href="../40-apply-config-changes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -641,19 +710,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../30-app-changes/10-app-changes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -662,7 +722,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -707,6 +766,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sample-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-configure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to configure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to test
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -723,33 +817,55 @@
   
 
 
-<h1 id="code-changes-for-openai-to-amazon-bedrock-migration">Code Changes for OpenAI to Amazon Bedrock Migration</h1>
-<p>With LiteLLM successfully deployed onto Amazon EKS and proxying requests to Amazon Bedrock, you can choose to migrate from OpenAI with minimal code changes.</p>
-<p>Requests from your applications that do not originate from Open WebUI can be modified by updating your OpenAI base endpoint to point to your ALB DNS name. This is similar to the change we made in step 17, updating an OpenAI endpoint to point to your LiteLLM service, this time to the ALB host name, or your CNAME record for <litellm-hostname> (check prerequisities section) that points to the ALB host name.</p>
-<ol>
-<li>
-<p>Update your application's OpenAI API endpoint to point to your <litellm-hostname>.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">openai</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">openai</span><span class="o">.</span><span class="n">api_base</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;your-litellm-hostname&quot;</span><span class="p">}</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">openai</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;your-open-ai-api-key&quot;</span><span class="p">}</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Your existing OpenAI code remains unchanged</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">Completion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">model</span><span class="o">=</span><span class="s2">&quot;text-davinci-003&quot;</span><span class="p">,</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Translate the following English text to French: &#39;Hello, how are you?&#39;&quot;</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">)</span>
+<h1 id="global-rate-limiting">Global rate limiting</h1>
+<p>LiteLLM allows you to apply requests per minute (RPM) and tokens per minute (TPM) limits globally across all users, teams, and models through the LiteLLM configuration file. These global limits ensure that traffic is controlled across all requests, regardless of individual user or team limits.</p>
+<div class="admonition note annotate">
+<p class="admonition-title">Note</p>
+<p>You do not need to configure a database URL or use the LLM master key to apply this configuration, making it simpler for deployments where per-user tracking is not required.</p>
+</div>
+<h2 id="sample-configuration">Sample configuration</h2>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">model_list</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">model_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">claude-3</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">litellm_params</span><span class="p">:</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">      </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">      </span><span class="nt">aws_region_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$AWS_REGION</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="nt">rpm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="nt">tpm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nt">router_settings</span><span class="p">:</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">enable_pre_call_checks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># 1. Enable pre-call checks</span>
 </span></code></pre></div>
-</li>
-<li>
-<p>Test and validate that your existing code and application work as expected, calling foundation models hosted on Amazon Bedrock via LiteLLM hosted on Amazon EKS. Best practices and considerations:</p>
+<h2 id="steps-to-configure">Steps to configure</h2>
 <ol>
-<li>Gradually migrate: Start by routing a small percentage of traffic through the LiteLLM proxy and gradually increase as you gain confidence.</li>
-<li>Monitor performance: Use Amazon CloudWatch to monitor the performance and AWS Cost Explorer to monitor the costs of your AWS usage, including Amazon Bedrock.</li>
-<li>Security: Ensure least privilege AWS Identity and Access Management (AWS IAM) roles and security groups are in place for your EKS cluster and Amazon Bedrock access.</li>
-<li>Scalability: Configure auto-scaling for your EKS nodes to handle varying loads.</li>
+<li>Use the configuration file <code>$BEDROCK_LITELLM_DIR/litellm/config/proxy_config_global_rate_limit.yaml</code></li>
+<li>To apply the new configuration, follow the steps outlined in <a href="../40-apply-config-changes/">Apply configuration changes</a>.</li>
 </ol>
-</li>
+<h2 id="steps-to-test">Steps to test</h2>
+<ol>
+<li>To test the global rate limit, make three or more API requests within one minute. After the second request, you should start receiving an error indicating that the limit has been reached. The limit will reset after one minute.
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span>--location<span class="w"> </span><span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">LITELLM_HOSTNAME</span><span class="si">}</span><span class="s2">/chat/completions&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--header<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--data<span class="w"> </span><span class="s1">&#39;{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="s1">    &quot;model&quot;: &quot;claude-3&quot;,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="s1">    &quot;messages&quot;: [</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="s1">      {</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="s1">        &quot;role&quot;: &quot;user&quot;,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="s1">        &quot;content&quot;: &quot;what is amazon S3&quot;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="s1">      }</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="s1">    ]</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="s1">  }&#39;</span>
+</span></code></pre></div>
+  If the rate limit is exceeded, you should receive an error response similar to the one below:
+  <div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;No deployments available for selected model, Try again in 60 seconds. Passed model=bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0. Try again in 60 seconds.&quot;</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">      </span><span class="nt">&quot;param&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="s2">&quot;429&quot;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
+</span></code></pre></div></li>
 </ol>
 
 

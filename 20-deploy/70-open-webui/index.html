@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://aws-samples.github.io/bedrock-litellm/30-app-changes/10-app-changes/">
+        <link rel="canonical" href="https://aws-samples.github.io/bedrock-litellm/20-deploy/70-open-webui/">
       
       
-        <link rel="prev" href="../../25-config/40-apply-config-changes/">
+        <link rel="prev" href="../60-expose-litellm/">
       
       
-        <link rel="next" href="../../99-contributors/">
+        <link rel="next" href="../99-clean-up/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>App changes - Migrate to Amazon Bedrock using LiteLLM</title>
+        <title>(Optional) Open WebUI - Migrate to Amazon Bedrock using LiteLLM</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#code-changes-for-openai-to-amazon-bedrock-migration" class="md-skip">
+        <a href="#optional-connect-open-webui-to-litellm" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              App changes
+              (Optional) Open WebUI
             
           </span>
         </div>
@@ -254,8 +254,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -278,11 +280,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -296,7 +298,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Deployment
@@ -310,7 +312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/20-configure-env-variables/" class="md-nav__link">
+      <a href="../20-configure-env-variables/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -331,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/25-clone-repo/" class="md-nav__link">
+      <a href="../25-clone-repo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -352,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/30-tools/" class="md-nav__link">
+      <a href="../30-tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -373,7 +375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/40-create-prepare-cluster/" class="md-nav__link">
+      <a href="../40-create-prepare-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -394,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/50-install-litellm/" class="md-nav__link">
+      <a href="../50-install-litellm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -415,7 +417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/60-expose-litellm/" class="md-nav__link">
+      <a href="../60-expose-litellm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -433,10 +435,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../20-deploy/70-open-webui/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    (Optional) Open WebUI
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -445,6 +467,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-requisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-webui-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open WebUI deployment
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -457,7 +517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20-deploy/99-clean-up/" class="md-nav__link">
+      <a href="../99-clean-up/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -641,19 +701,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../30-app-changes/10-app-changes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -662,7 +713,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -707,6 +757,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-requisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-webui-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open WebUI deployment
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -723,32 +799,73 @@
   
 
 
-<h1 id="code-changes-for-openai-to-amazon-bedrock-migration">Code Changes for OpenAI to Amazon Bedrock Migration</h1>
-<p>With LiteLLM successfully deployed onto Amazon EKS and proxying requests to Amazon Bedrock, you can choose to migrate from OpenAI with minimal code changes.</p>
-<p>Requests from your applications that do not originate from Open WebUI can be modified by updating your OpenAI base endpoint to point to your ALB DNS name. This is similar to the change we made in step 17, updating an OpenAI endpoint to point to your LiteLLM service, this time to the ALB host name, or your CNAME record for <litellm-hostname> (check prerequisities section) that points to the ALB host name.</p>
+<h1 id="optional-connect-open-webui-to-litellm">(Optional) Connect Open WebUI to LiteLLM</h1>
+<p><a href="">Open WebUI</a> is a web frontend that allows users to interact with LLMs. It supports locally running LLMs using Ollama, and OpenAI-compatible remote endpoints. In this implementation, we are configuring a remote endpoint that points to LiteLLM to show how LiteLLM allows for accessing Bedrock through an OpenAI-compatible interface. </p>
+<h2 id="pre-requisites">Pre-requisites</h2>
+<ul>
+<li>A domain that can be used for hosting Open WebUI, a web frontend that allows users to interact with LLMs; it will be used to test LiteLLM setup.</li>
+<li>A digital certificate in AWS Certificate Manager (ACM) for enabling TLS on Open WebUI</li>
+</ul>
+<h2 id="open-webui-deployment">Open WebUI deployment</h2>
 <ol>
 <li>
-<p>Update your application's OpenAI API endpoint to point to your <litellm-hostname>.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">openai</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">openai</span><span class="o">.</span><span class="n">api_base</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;your-litellm-hostname&quot;</span><span class="p">}</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">openai</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;your-open-ai-api-key&quot;</span><span class="p">}</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Your existing OpenAI code remains unchanged</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">Completion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">model</span><span class="o">=</span><span class="s2">&quot;text-davinci-003&quot;</span><span class="p">,</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Translate the following English text to French: &#39;Hello, how are you?&#39;&quot;</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">)</span>
+<p>Configure environment variables; replace <code>&lt;open-webui-hostname&gt;</code>, <code>&lt;open-webui-cert-arn&gt;</code> with the corresponding hostnames and ACM certificates ARN.</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OPEN_WEBUI_HOSTNAME</span><span class="o">=</span><span class="s2">&quot;&lt;open-webui-hostname&gt;&quot;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OPEN_WEBUI_CERTIFICATE_ARN</span><span class="o">=</span><span class="s2">&quot;&lt;open-webui-cert-arn&gt;&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export OPEN_WEBUI_HOSTNAME=</span><span class="si">${</span><span class="nv">OPEN_WEBUI_HOSTNAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.bash_profile
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export OPEN_WEBUI_CERTIFICATE_ARN=</span><span class="si">${</span><span class="nv">OPEN_WEBUI_CERTIFICATE_ARN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.bash_profile
 </span></code></pre></div>
 </li>
 <li>
-<p>Test and validate that your existing code and application work as expected, calling foundation models hosted on Amazon Bedrock via LiteLLM hosted on Amazon EKS. Best practices and considerations:</p>
-<ol>
-<li>Gradually migrate: Start by routing a small percentage of traffic through the LiteLLM proxy and gradually increase as you gain confidence.</li>
-<li>Monitor performance: Use Amazon CloudWatch to monitor the performance and AWS Cost Explorer to monitor the costs of your AWS usage, including Amazon Bedrock.</li>
-<li>Security: Ensure least privilege AWS Identity and Access Management (AWS IAM) roles and security groups are in place for your EKS cluster and Amazon Bedrock access.</li>
-<li>Scalability: Configure auto-scaling for your EKS nodes to handle varying loads.</li>
-</ol>
+<p>Install Open WebUI:
+    <div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>open-webui<span class="w"> </span>https://helm.openwebui.com/
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>helm<span class="w"> </span>upgrade<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span>--install<span class="w"> </span>open-webui<span class="w"> </span>open-webui/open-webui<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span>--namespace<span class="w"> </span>open-webui<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>--create-namespace<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>-f<span class="w"> </span>bedrock-litellm/helm/open-webui-private-values.yaml
+</span></code></pre></div></p>
+<p>The first user signing up will get admin access. So, initially, Open WebUI will be only accessible from within the cluster to securely create the first/admin user. Subsequent sign ups will be in pending state till they are approved by the admin user.</p>
+</li>
+<li>
+<p>Use <code>kubectl port-forward</code> to allow access to Open WebUI from the machine used for installation:
+    <div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>service/open-webui<span class="w"> </span>-n<span class="w"> </span>open-webui<span class="w">  </span><span class="m">8080</span>:80
+</span></code></pre></div></p>
+<p>If you are using Cloud9, you can access Open WebUI by clicking "Preview" (top bar), then "Preview Running Application".</p>
+</li>
+<li>
+<p>Sign-up (remember, first signed up user get admin access), then go to User icon at top right, settings, admin settings, connections, then edit OpenAI API to be as follows:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>http://litellm-service.default.svc.cluster.local:4000/v1
+</span></code></pre></div>
+<p>Click on "Verify connection" button to make sure connectivity is in-place, then save. You should be able to see three of the Bedrock models available in Open WebUI as depicted in the screenshot below:</p>
+<p><img alt="architecture" src="../../open-webui.png" /></p>
+<p>Now, we have the admin user created, we can make Open WebUI accessible publicly.</p>
+</li>
+<li>
+<p>Update Open WebUI helm release to include <code>Ingress</code> object for exposing it:
+    <div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>envsubst<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$BEDROCK_LITELLM_DIR</span>/helm/open-webui-public-values.yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span>open-webui<span class="w"> </span>open-webui/open-webui<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>--namespace<span class="w"> </span>open-webui<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span>-f<span class="w"> </span>-
+</span></code></pre></div></p>
+<div class="admonition note annotate">
+<p class="admonition-title">Note</p>
+<p>ELB needs a minute or so to complete the target registration; if the URL above did not work for you, wait for a few seconds for the registration to get completed.</p>
+</div>
+</li>
+<li>
+<p>Extract Open WebUI URL:
+    <div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>-n<span class="w"> </span>open-webui<span class="w"> </span>get<span class="w"> </span>ingress<span class="w"> </span>open-webui<span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.loadBalancer.ingress[*].hostname}&#39;</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Add a CNAME record for <code>&lt;open-webui-hostname&gt;</code> (check prerequisities section) that points to the ALB host name, then access Open WebUI using <code>&lt;open-webui-hostname&gt;</code>.</p>
+</li>
+<li>
+<p>Edit <code>litellm/proxy_config.yaml</code>, update the IAM policy <code>litellm-bedrock-policy.json</code>, and enable access through the Bedrock console to add more Bedrock models on LiteLLM.</p>
 </li>
 </ol>
 

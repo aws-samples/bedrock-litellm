@@ -8,11 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://github.bedrock-litellm.com/50-clean-up/10-clean-up/">
+        <link rel="canonical" href="https://aws-samples.github.io/bedrock-litellm/25-config/40-apply-config-changes/">
       
       
-        <link rel="prev" href="../../40-clients/10-open-webui/">
+        <link rel="prev" href="../30-route/">
       
+      
+        <link rel="next" href="../../30-app-changes/10-app-changes/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +22,7 @@
     
     
       
-        <title>Clean-up - Migrate to Amazon Bedrock using LiteLLM</title>
+        <title>Apply configuration changes - Migrate to Amazon Bedrock using LiteLLM</title>
       
     
     
@@ -61,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#apply-configuration-changes" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -93,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Clean-up
+              Apply configuration changes
             
           </span>
         </div>
@@ -143,6 +150,18 @@
 </div>
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/aws-samples/bedrock-litellm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -176,6 +195,18 @@
     </a>
     Migrate to Amazon Bedrock using LiteLLM
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aws-samples/bedrock-litellm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -242,6 +273,8 @@
       
         
       
+        
+      
     
     
     
@@ -269,27 +302,6 @@
             Deployment
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../20-deploy/10-prerequisites/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Prerequisites
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -407,11 +419,224 @@
         
   
   <span class="md-ellipsis">
-    Expose LiteLLM
+    (Optional) Expose LiteLLM
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-deploy/70-open-webui/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (Optional) Open WebUI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-deploy/99-clean-up/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clean-up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-model-alias/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model aliases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-rate-limit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rate limiting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-global-rate-limit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Global rate limiting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Routing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Apply configuration changes
+  </span>
+  
+
+      </a>
+      
     </li>
   
 
@@ -450,91 +675,16 @@
   
   
   
-    
-    
-      
-        
-      
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Clients
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            Clients
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../40-clients/10-open-webui/" class="md-nav__link">
+      <a href="../../99-contributors/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Open WebUI
+    Contributors
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Clean-up
-  </span>
-  
-
-      </a>
-      
     </li>
   
 
@@ -556,6 +706,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -569,53 +721,31 @@
                 
                   
 
+  
+  
 
-  <h1>Clean-up</h1>
 
+<h1 id="apply-configuration-changes">Apply configuration changes</h1>
+<p>In order to apply LiteLLM configuration changes in ConfigMap, follow the steps below to ensure the deployment is patched, thereby forcing a pod restart to reflect latest changes:</p>
+<div class="admonition note annotate">
+<p class="admonition-title">Note</p>
+<p>If  the configuration file contains environment variables (e.g., <code>$AWS_REGION</code>), use the <code>envsubst</code> command to replace the variables with their actual values, before updating the ConfigMap. See an example below.</p>
+</div>
+<div class="admonition tip annotate">
+<p class="admonition-title">Note</p>
+<p>Replace the filename below to reflect your file with configuration update i.e. <code>$BEDROCK_LITELLM_DIR/litellm/config/proxy_config_model_alias.yaml</code> to be replaced with your relevant file that contains the updated configuration.</p>
+</div>
 <ol>
-<li>
-<p>Uninstall Open WebUI:
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>open-webui<span class="w"> </span>--namespace<span class="w"> </span>open-webui
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Uninstall LiteLLM
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>litellm/deploy/kubernetes/service.yaml
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>litellm/deploy/kubernetes/kub.yaml
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>configmap<span class="w"> </span>litellm-config
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>eksctl<span class="w"> </span>delete<span class="w"> </span>iamserviceaccount<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span>--name<span class="w"> </span>litellm-sa<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>aws<span class="w"> </span>iam<span class="w"> </span>delete-policy<span class="w"> </span>--policy-arn<span class="w"> </span><span class="nv">$LITELLM_BEDROCK_IAM_POLICY_ARN</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Uninstall AWS LBC
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span>--namespace<span class="w"> </span>kube-system
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>eksctl<span class="w"> </span>delete<span class="w"> </span>iamserviceaccount<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>--name<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>--namespace<span class="o">=</span>kube-system<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>aws<span class="w"> </span>iam<span class="w"> </span>delete-policy<span class="w"> </span>--policy-arn<span class="w"> </span><span class="nv">$AWS_LBC_IAM_POLICY_ARN</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Uninstall EBS driver
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>aws-ebs-csi-driver<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>--namespace<span class="w"> </span>kube-system
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>eksctl<span class="w"> </span>delete<span class="w"> </span>iamserviceaccount<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span>--name<span class="w"> </span>ebs-csi-controller-sa<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Delete cluster
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>eksctl<span class="w"> </span>delete<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span><span class="nv">$CLUSTER_NAME</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Delete the CNAME DNS records and the ACM certiciates used for LiteLLM and Open WebUI</p>
-</li>
+<li>Run the following command to replace the environment variables with their values.
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>envsubst<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$BEDROCK_LITELLM_DIR</span>/litellm/config/proxy_config_model_alias.yaml<span class="w"> </span>&gt;<span class="w"> </span>/tmp/proxy_config_model_alias.yaml
+</span></code></pre></div></li>
+<li>Run the following command to update the configMap with latest configuration from a file.
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>configmap<span class="w"> </span>litellm-config<span class="w"> </span>--from-file<span class="o">=</span>litellm-config.yaml<span class="o">=</span>/tmp/proxy_config_model_alias.yaml<span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-
+</span></code></pre></div></li>
+<li>Patch the deployment to reflect the changes. After updating the ConfigMap, the pods won’t automatically reload the configuration. You need to patch the deployment to force a pod restart, ensuring that the new configuration is picked up.
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>litellm-deployment<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;{\&quot;spec\&quot;:{\&quot;template\&quot;:{\&quot;metadata\&quot;:{\&quot;annotations\&quot;:{\&quot;configmap-update-timestamp\&quot;:\&quot;</span><span class="k">$(</span>date<span class="w"> </span>+<span class="s1">&#39;%s&#39;</span><span class="k">)</span><span class="s2">\&quot;}}}}}&quot;</span>
+</span></code></pre></div></li>
+<li>Once the pods are restarted, verify the new configuration is applied by checking the logs.</li>
 </ol>
 
 

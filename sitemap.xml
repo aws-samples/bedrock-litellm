@@ -1,51 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://github.bedrock-litellm.com/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <loc>https://aws-samples.github.io/bedrock-litellm/</loc>
+         <lastmod>2024-11-13</lastmod>
     </url>
     <url>
-         <loc>https://github.bedrock-litellm.com/10-architecture/10-architecture/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <loc>https://aws-samples.github.io/bedrock-litellm/99-contributors/</loc>
+         <lastmod>2024-11-13</lastmod>
     </url>
     <url>
-         <loc>https://github.bedrock-litellm.com/20-deploy/10-prerequisites/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <loc>https://aws-samples.github.io/bedrock-litellm/10-architecture/10-architecture/</loc>
+         <lastmod>2024-11-13</lastmod>
     </url>
     <url>
-         <loc>https://github.bedrock-litellm.com/20-deploy/20-configure-env-variables/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <loc>https://aws-samples.github.io/bedrock-litellm/20-deploy/20-configure-env-variables/</loc>
+         <lastmod>2024-11-13</lastmod>
     </url>
     <url>
-         <loc>https://github.bedrock-litellm.com/20-deploy/25-clone-repo/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <loc>https://aws-samples.github.io/bedrock-litellm/20-deploy/25-clone-repo/</loc>
+         <lastmod>2024-11-13</lastmod>
     </url>
     <url>
-         <loc>https://github.bedrock-litellm.com/20-deploy/30-tools/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <loc>https://aws-samples.github.io/bedrock-litellm/20-deploy/30-tools/</loc>
+         <lastmod>2024-11-13</lastmod>
     </url>
     <url>
-         <loc>https://github.bedrock-litellm.com/20-deploy/40-create-prepare-cluster/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <loc>https://aws-samples.github.io/bedrock-litellm/20-deploy/40-create-prepare-cluster/</loc>
+         <lastmod>2024-11-13</lastmod>
     </url>
     <url>
-         <loc>https://github.bedrock-litellm.com/20-deploy/50-install-litellm/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <loc>https://aws-samples.github.io/bedrock-litellm/20-deploy/50-install-litellm/</loc>
+         <lastmod>2024-11-13</lastmod>
     </url>
     <url>
-         <loc>https://github.bedrock-litellm.com/20-deploy/60-expose-litellm/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <loc>https://aws-samples.github.io/bedrock-litellm/20-deploy/60-expose-litellm/</loc>
+         <lastmod>2024-11-13</lastmod>
     </url>
     <url>
-         <loc>https://github.bedrock-litellm.com/30-app-changes/10-app-changes/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <loc>https://aws-samples.github.io/bedrock-litellm/20-deploy/70-open-webui/</loc>
+         <lastmod>2024-11-13</lastmod>
     </url>
     <url>
-         <loc>https://github.bedrock-litellm.com/40-clients/10-open-webui/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <loc>https://aws-samples.github.io/bedrock-litellm/20-deploy/99-clean-up/</loc>
+         <lastmod>2024-11-13</lastmod>
     </url>
     <url>
-         <loc>https://github.bedrock-litellm.com/50-clean-up/10-clean-up/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <loc>https://aws-samples.github.io/bedrock-litellm/25-config/10-model-alias/</loc>
+         <lastmod>2024-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aws-samples.github.io/bedrock-litellm/25-config/20-rate-limit/</loc>
+         <lastmod>2024-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aws-samples.github.io/bedrock-litellm/25-config/25-global-rate-limit/</loc>
+         <lastmod>2024-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aws-samples.github.io/bedrock-litellm/25-config/30-route/</loc>
+         <lastmod>2024-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aws-samples.github.io/bedrock-litellm/25-config/40-apply-config-changes/</loc>
+         <lastmod>2024-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://aws-samples.github.io/bedrock-litellm/30-app-changes/10-app-changes/</loc>
+         <lastmod>2024-11-13</lastmod>
     </url>
 </urlset>
