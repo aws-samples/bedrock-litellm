@@ -58,4 +58,3 @@ You can specify both rpm_limit (requests per minute) and tpm_limit (tokens per m
   Similarly you can perform other tests on TPM as well.
   
   Please note the above test is for applying rate limit on user level. If you want to test different configurations on teams, organization etc, you can follow LiteLLM documentation [here](https://docs.litellm.ai/docs/proxy/users).
-
