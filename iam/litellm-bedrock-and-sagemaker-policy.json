@@ -16,6 +16,16 @@
                 "arn:aws:bedrock:$AWS_REGION::foundation-model/anthropic.claude-3-5-sonnet-20240620-v1:0",
                 "arn:aws:bedrock:$AWS_REGION::foundation-model/anthropic.claude-3-haiku-20240307-v1:0"
             ]
+        },
+        {
+            "Action": [
+                "sagemaker:InvokeEndpoint",
+                "sagemaker:InvokeEndpointWithResponseStream"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:sagemaker:$AWS_REGION:$ACCOUNT_ID:endpoint/$ENDPOINT_NAME"
+            ]
         }
     ]
 }
