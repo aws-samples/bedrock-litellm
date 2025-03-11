@@ -5,13 +5,13 @@ kind: ClusterConfig
 metadata:
   name: $CLUSTER_NAME
   region: $AWS_REGION
-  version: "1.30"
+  version: "1.32"
 
 availabilityZones: ["${AWS_REGION}a", "${AWS_REGION}b", "${AWS_REGION}c"]
 
 managedNodeGroups:
 - name: nodegroup
   desiredCapacity: 3
-  instanceType: m5.large
+  instanceType: t3.medium
   ssh:
     enableSsm: true
