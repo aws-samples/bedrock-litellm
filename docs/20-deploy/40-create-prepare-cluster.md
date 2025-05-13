@@ -10,7 +10,6 @@ envsubst < $BEDROCK_LITELLM_DIR/eksctl/cluster-config.yaml | eksctl create clust
 eksctl utils associate-iam-oidc-provider --cluster $CLUSTER_NAME --approve
 ```
 
-
 1. (Optional) Install AWS Load Balancer Controller (AWS LBC):
 
     !!! note annotate "Note"
